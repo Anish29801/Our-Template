@@ -1,4 +1,6 @@
 import { DeliveryMethod } from "@shopify/shopify-api";
+import Manager from "./Manager.js"
+import Manager2 from "./Manager2.js"
 
 /**
  * @type {{[key: string]: import("@shopify/shopify-api").WebhookHandler}}
@@ -81,6 +83,38 @@ export default {
       //   "shop_id": 954889,
       //   "shop_domain": "{shop}.myshopify.com"
       // }
+    },
+  },
+  ORDERS_CREATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: "/api/webhooks",
+    callback: async (topic, shop, body, webhookId) => {
+      const payload = JSON.parse(body);
+      // console.log("DATA ----------------------------> "+body);
+      console.log("Shop -------------------------->", shop);
+      try {
+        Manager(payload)
+      } catch (error) {
+        console.log(error);
+      }
+
+    },
+  },
+  INVENTORY_LEVELS_UPDATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: "/api/webhooks",
+    callback: async (topic, shop, body, webhookId) => {
+      const payload = JSON.parse(body);
+      // console.log("DATA ----------------------------> "+body);
+      console.log("Shop -------------------------->", shop);
+      try {
+        Manager2(payload)
+
+
+      } catch (error) {
+        console.log(error);
+      }
+
     },
   },
 };

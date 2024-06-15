@@ -52,7 +52,7 @@ export function ProductsCard() {
 
   return (
     <div>
-      <h2 className=" text-red-500">This is Test</h2>
+      
     </div>
   );
 }

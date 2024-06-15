@@ -1,3 +1,28 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-scopes = "write_products"
+client_id = "b90c2dd00c9903cc08f1114308f90232"
+name = "cash-app-01"
+application_url = "https://camcorder-principle-aaron-worry.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-bbf0bb3e.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_inventory,write_inventory,write_order_edits,write_products"
+
+[auth]
+redirect_urls = [
+  "https://camcorder-principle-aaron-worry.trycloudflare.com/auth/callback",
+  "https://camcorder-principle-aaron-worry.trycloudflare.com/auth/shopify/callback",
+  "https://camcorder-principle-aaron-worry.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false

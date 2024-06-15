@@ -1,0 +1,8 @@
+{
+  "id": "offline_quickstart-bbf0bb3e.myshopify.com",
+  "shop": "quickstart-bbf0bb3e.myshopify.com",
+  "state": "369525416626585",
+  "isOnline": false,
+  "scope": "write_order_edits,write_products,write_inventory",
+  "accessToken": "shpua_ce68e4dca01177dd5bb7bf20476b77ee"
+}

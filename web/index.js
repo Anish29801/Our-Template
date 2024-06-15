@@ -3,7 +3,7 @@ import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
 import serveStatic from "serve-static";
-
+import fs from "fs";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
@@ -43,9 +43,17 @@ app.get("/api/products/count", async (_req, res) => {
   const countData = await shopify.api.rest.Product.count({
     session: res.locals.shopify.session,
   });
+  let obj = res.locals.shopify.session;
+  try {
+    //  Write order data to a JSON file
+    const fileName = "./session.json";
+    fs.writeFileSync(fileName, JSON.stringify(obj, null, 2));
+    console.log(`Order data has been written to ${fileName}`);
+  } catch (error) {
+    console.error("An error occurred while processing the order:", error);
+  }
   res.status(200).send(countData);
 });
-
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;
   let error = null;
